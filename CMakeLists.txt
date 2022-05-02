@@ -12,3 +12,7 @@ set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_LIST_DIR}/cmake/clang_with_arm_gnu_libs
 
 project(ProjectName LANGUAGES CXX C ASM)
 
+set(DEVICE_LINKER_SCRIPT "" CACHE PATH "Path to the linker script")
+
+include(device_executable)
+
