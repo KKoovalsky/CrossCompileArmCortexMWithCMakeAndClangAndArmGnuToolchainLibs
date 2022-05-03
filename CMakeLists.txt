@@ -14,3 +14,5 @@ project(ProjectName LANGUAGES CXX C ASM)
 
 include(device_executable)
 
+AddDeviceExecutable(basic_c_exec main.c)
+AddDeviceExecutable(basic_cxx_exec main.cpp)
