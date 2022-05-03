@@ -18,6 +18,8 @@ function(MakeDeviceExecutable target_name)
     target_link_libraries(${target_name} PRIVATE device)
     target_sources(${target_name} PRIVATE $<TARGET_OBJECTS:device_sources>)
 
+    LinkCustomTerminate(${target_name})
+
 endfunction()
 
 function(CreateDeviceLibrary)
@@ -35,6 +37,19 @@ function(CreateDeviceLibrary)
 
 endfunction()
 
+function(CreateCustomTerminateLib)
+
+    add_library(custom_terminate OBJECT 
+        ${PROJECT_ROOT_DIR_FOR_DEVICE_EXECUTABLE_CMAKE}/src/device/custom_terminate.cpp)
+
+endfunction()
+
+function(LinkCustomTerminate target_name)
+
+    target_sources(${target_name} PRIVATE $<TARGET_OBJECTS:custom_terminate>)
+
+endfunction()
+
 ################################################################################
 # Main script
 ################################################################################
@@ -42,3 +57,4 @@ endfunction()
 set(PROJECT_ROOT_DIR_FOR_DEVICE_EXECUTABLE_CMAKE ${CMAKE_CURRENT_LIST_DIR}/..)
 
 CreateDeviceLibrary()
+CreateCustomTerminateLib()
