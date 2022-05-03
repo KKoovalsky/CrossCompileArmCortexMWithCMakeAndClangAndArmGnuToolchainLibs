@@ -39,6 +39,12 @@ string(CONCAT exe_linker_flags
     " -L${standard_libraries_dir}"
     " -L${compiler_runtime_libraries_dir}"
     " -L${libunwind_dir}"
+    " ${compiler_runtime_libraries_dir}/crti.o"
+    " ${compiler_runtime_libraries_dir}/crtbegin.o"
+    " ${compiler_runtime_libraries_dir}/crtend.o"
+    " ${compiler_runtime_libraries_dir}/crtn.o"
+    " -lnosys"
+    " -Wl,--gc-sections"
 )
 
 set(CMAKE_C_FLAGS_INIT "${basic_flags} ${c_system_includes}")
