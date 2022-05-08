@@ -82,3 +82,8 @@ cmake --build . --target <your_executable>-flash
 ```
 
 Make sure to call the `AddFlashTarget()` within the `AddDeviceExecutable()` function.
+
+### 6. Remove the unneeded code
+
+The calls to `AddDeviceExecutable()` within the main `CMakeLists.txt` are demonstratory, as well as the `demo/` 
+directory.
