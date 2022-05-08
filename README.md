@@ -10,6 +10,17 @@ This template allows creating projects which utilizes:
 `clang` is used for cross-compilation. The pre-built standard libraries and compiler runtime is taken from the
 ARM GNU Toolchain.
 
+The `CMAKE_TOOLCHAIN_FILE` is set to `cmake/clang_with_arm_gnu_libs_device_toolchain.cmake` by default. There is no
+need to specify it within the command line, thus calling:
+
+```
+mkdir build
+cd build
+cmake ..
+```
+
+Is sufficient.
+
 You can create multiple executables with this setup. Simply call `AddDeviceExecutable()` within the CMake code, to
 create a flashable executable. The function has the same interface as the `add_executable()` builtin.
 
