@@ -19,6 +19,7 @@ function(MakeDeviceExecutable target_name)
     target_sources(${target_name} PRIVATE $<TARGET_OBJECTS:device_sources>)
 
     LinkCustomTerminate(${target_name})
+    PrintBinarySizeAfterBuild(${target_name})
 
 endfunction()
 
@@ -47,6 +48,15 @@ endfunction()
 function(LinkCustomTerminate target_name)
 
     target_sources(${target_name} PRIVATE $<TARGET_OBJECTS:custom_terminate>)
+
+endfunction()
+
+function(PrintBinarySizeAfterBuild target_name)
+
+    add_custom_command(TARGET ${target_name} POST_BUILD
+        COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${target_name}>
+        COMMENT "Section sizes of the executable binary"
+    )
 
 endfunction()
 
