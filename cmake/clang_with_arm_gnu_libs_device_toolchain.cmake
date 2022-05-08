@@ -45,6 +45,7 @@ string(CONCAT exe_linker_flags
     " ${compiler_runtime_libraries_dir}/crtn.o"
     " -lnosys"
     " -Wl,--gc-sections"
+    " -Wl,--target2=rel"
 )
 
 set(CMAKE_C_FLAGS_INIT "${basic_flags} ${c_system_includes}")
